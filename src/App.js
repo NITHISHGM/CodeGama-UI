@@ -1,58 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+import { Layout, Row, Col } from "antd";
 
-function App() {
+import AllProducts from "./components/AllProducts";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ProductCard from "./components/ProductCard";
+const { Header, Footer, Content } = Layout;
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div>
+      <Layout>
+        <Header className="app-header">
+          <Row>
+            <Col span={24}>
+              <div className="head-title">Gama Cart</div>
+            </Col>
+          </Row>
+        </Header>
+        <Content className="app-content">
+          <Router>
+            <Routes>
+              <Route path="/" element={<AllProducts />} />
+              <Route path="/productCard/:id" element={<ProductCard />} />
+            </Routes>
+          </Router>
+        </Content>
+        <Footer className="app-footer">
+          <div className="footer-title">
+            Gama Cart ©2023 Created by CODEGAMA
+          </div>
+        </Footer>
+      </Layout>
     </div>
   );
-}
+};
 
 export default App;

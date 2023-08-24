@@ -1,11 +1,15 @@
 import React from "react";
-import { Card, Image, Row, Col, Rate } from "antd";
-import { useSelector } from "react-redux";
+import { Card, Image, Row, Col, Rate, Button } from "antd";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { addToCart } from "../redux/slice/cartSlice";
 
 const ProductCard = (itemDetails) => {
+  const dispatch = useDispatch();
   const { id } = useParams();
+
   const { data, status } = useSelector((state) => state.allProducts);
+
   const { title, price, description, image, rating } = data[id - 1];
   return (
     <>
@@ -28,6 +32,11 @@ const ProductCard = (itemDetails) => {
             <div className="price-cls">
               ${price}{" "}
               <span className="price-overline pl-2"> $ {price * 2}</span>
+            </div>
+            <div>
+              <Button onClick={() => dispatch(addToCart(data[id - 1]))}>
+                Add To Cart
+              </Button>
             </div>
           </Col>
         </Row>

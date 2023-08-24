@@ -1,10 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-export const getAllProducts = createAsyncThunk(
-  "GamaCart/getAllProducts",
+export const getAllCategories = createAsyncThunk(
+  "GamaCart/getAllCategories",
   async () => {
     try {
-      const response = await axios.get(`https://fakestoreapi.com/products`);
+      const response = await axios.get(
+        `https://fakestoreapi.com/products/categories`
+      );
       return response.data;
     } catch (error) {
       throw error;
@@ -12,8 +14,8 @@ export const getAllProducts = createAsyncThunk(
   }
 );
 
-const getAllProductsSlice = createSlice({
-  name: "allproducts",
+const getAllCategoriesSlcie = createSlice({
+  name: "allcategories",
   initialState: {
     data: [],
     status: true,
@@ -22,17 +24,17 @@ const getAllProductsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getAllProducts.pending, (state) => {
+      .addCase(getAllCategories.pending, (state) => {
         state.status = true;
       })
-      .addCase(getAllProducts.fulfilled, (state, action) => {
+      .addCase(getAllCategories.fulfilled, (state, action) => {
         state.status = false;
         state.data = action.payload;
       })
-      .addCase(getAllProducts.rejected, (state, action) => {
+      .addCase(getAllCategories.rejected, (state, action) => {
         state.status = true;
         state.error = action.error.message;
       });
   },
 });
-export default getAllProductsSlice.reducer;
+export default getAllCategoriesSlcie.reducer;

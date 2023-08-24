@@ -15,31 +15,28 @@ const FilterProducts = () => {
   };
   return (
     <div className="float-right filter-product">
-      {!status ? (
-        <>
-          <span className="filter-product-label">Filter Products</span>
+      <>
+        <span className="filter-product-label">Filter Products</span>
 
-          <Select
-            className="select-filter-product"
-            style={{ width: "200px" }}
-            showSearch
-            value={selectedValue}
-            onChange={HandleChangeCategories}
-            placeholder="Select a person"
-            optionFilterProp="children"
-            filterOption={(input, option) =>
-              (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
-            }
-          >
-            <Option value="ALL">ALL</Option>
-            {data.map((d) => {
-              return <Option value={d}>{d}</Option>;
-            })}
-          </Select>
-        </>
-      ) : (
-        <></>
-      )}
+        <Select
+          className="select-filter-product"
+          style={{ width: "200px" }}
+          disabled={status}
+          showSearch
+          value={selectedValue}
+          onChange={HandleChangeCategories}
+          placeholder="Select a person"
+          optionFilterProp="children"
+          filterOption={(input, option) =>
+            (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
+          }
+        >
+          <Option value="ALL">ALL</Option>
+          {data.map((d) => {
+            return <Option value={d}>{d}</Option>;
+          })}
+        </Select>
+      </>
     </div>
   );
 };

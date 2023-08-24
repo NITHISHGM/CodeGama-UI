@@ -17,15 +17,15 @@ const AllProducts = () => {
   }, [dispatch]);
   return (
     <div>
+      <Row>
+        <Col span={24}>
+          <FilterProducts />
+        </Col>
+      </Row>
       {status ? (
         <>Loading</>
       ) : (
         <>
-          <Row>
-            <Col span={24}>
-              <FilterProducts />
-            </Col>
-          </Row>
           <Row>
             {data?.map((item, ind) => {
               return (

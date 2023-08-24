@@ -28,15 +28,21 @@ const Cart = () => {
                 </Row>
                 <Row>
                   <Col span={12}>
-                    <div> Quantity : {item.quantity}</div>
-                    <div> Total Price : $ {TotalPrice}</div>
+                    <div className="product-value">
+                      {" "}
+                      Quantity : {item.quantity}
+                    </div>
+                    <div className="product-value">
+                      {" "}
+                      Total Price : $ {TotalPrice}
+                    </div>
                   </Col>
                   <Col span={12}>
                     {" "}
                     <div>
                       <Button
                         type="primary"
-                        className="float-right"
+                        className="float-right remove-btn"
                         danger
                         onClick={() => dispatch(removeFromCart(item))}
                       >

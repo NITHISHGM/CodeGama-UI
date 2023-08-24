@@ -34,7 +34,10 @@ const ProductCard = (itemDetails) => {
               <span className="price-overline pl-2"> $ {price * 2}</span>
             </div>
             <div>
-              <Button onClick={() => dispatch(addToCart(data[id - 1]))}>
+              <Button
+                type="primary"
+                onClick={() => dispatch(addToCart(data[id - 1]))}
+              >
                 Add To Cart
               </Button>
             </div>

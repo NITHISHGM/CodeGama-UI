@@ -86,3 +86,6 @@ span.price-overline {
 .product-list-cls {
   background: #cbcbcb;
 }
+.float-right{
+  float: right;
+}

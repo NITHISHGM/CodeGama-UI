@@ -4,6 +4,8 @@ import { Layout, Row, Col } from "antd";
 import AllProducts from "./components/AllProducts";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ProductCard from "./components/ProductCard";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+import Cart from "./components/Cart";
 const { Header, Footer, Content } = Layout;
 const App = () => {
   return (
@@ -12,7 +14,12 @@ const App = () => {
         <Header className="app-header">
           <Row>
             <Col span={24}>
-              <div className="head-title">Gama Cart</div>
+              <div className="head-title">
+                Gama Cart{" "}
+                <span className="float-right">
+                  <ShoppingCartOutlined />
+                </span>
+              </div>
             </Col>
           </Row>
         </Header>
@@ -21,6 +28,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<AllProducts />} />
               <Route path="/productCard/:id" element={<ProductCard />} />
+              <Route path="/cart" element={<Cart />} />
             </Routes>
           </Router>
         </Content>

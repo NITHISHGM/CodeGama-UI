@@ -89,3 +89,7 @@ span.price-overline {
 .float-right{
   float: right;
 }
+.cart-card {
+  margin: 10px;
+  background: #dadada;
+}

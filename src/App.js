@@ -1,13 +1,15 @@
 import React from "react";
-import { Layout, Row, Col, Space } from "antd";
+import { Layout, Row, Col, Space, Badge } from "antd";
 
 import AllProducts from "./components/AllProducts";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import ProductCard from "./components/ProductCard";
 import { ShoppingCartOutlined, HomeOutlined } from "@ant-design/icons";
+import { useSelector } from "react-redux";
 import Cart from "./components/Cart";
 const { Header, Footer, Content } = Layout;
 const App = () => {
+  const data = useSelector((state) => state.cart.cartData);
   return (
     <div>
       <Router>
@@ -24,7 +26,9 @@ const App = () => {
                         <HomeOutlined />
                       </Link>
                       <Link to="/cart">
-                        <ShoppingCartOutlined />
+                        <Badge size="small" count={data?.length}>
+                          <ShoppingCartOutlined />
+                        </Badge>
                       </Link>
                     </Space>
                   </span>
